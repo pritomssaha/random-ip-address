@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Midterm1</title>
+  <style>
+    #demo{
+      text-align:left;
+      margin-left:15%;
+      color:#43c465;
+      font-size:15px;
+      font-weight: bold;
+
+    }
+  </style>
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <form style="margin-top: 30px">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="" id="ip">
+  </div>
+  <div class="form-group" >
+  <button type="submit" class="btn btn-danger mr-4" id="button1">Random</button>
+  <button type="submit" class="btn btn-primary mr-4" id="className">Class</button>
+  <button type="submit" class="btn btn-success mr-4" id="clear">Clear</button>
+  </div>
+
+</form>
+</div>
+<div id="demo">
+
+</div>
+
+<script type="text/javascript">
+  const ip=document.getElementById("ip");
+  const random=document.getElementById("random");
+  const className=document.getElementById("className");
+  const clear=document.getElementById("clear");
+
+
+  document.getElementById("button1").addEventListener('click',function(e){
+    e.preventDefault();
+    var ip_address = (Math.floor(Math.random() * 255) + 1)+"."+(Math.floor(Math.random() * 255))+"."+(Math.floor(Math.random() * 255))+"."+(Math.floor(Math.random() * 255));
+    document.getElementById('ip').setAttribute('value', ip_address);
+    console.log(document.getElementById('ip').value)
+  })
+  //getClassName
+  document.getElementById("className").addEventListener('click',function(e){
+    e.preventDefault();
+    const value=document.getElementById('ip').value
+    const arr=value.split(".")
+    const get_octate=arr[0];
+    console.log(get_octate);
+    var get_class="";
+    if (get_octate>=1 && get_octate<=126){
+            get_class= "A";
+         }
+
+    else if (get_octate>=128 && get_octate<=191){
+            get_class= "B";
+          }
+
+    else if (get_octate>=192 && get_octate<223){
+            get_class= "C";
+          }
+
+    else if (get_octate >=224 && get_octate<=239){
+            get_class= "D";
+          }
+    else{
+            get_class= "E";
+          }
+
+  document.getElementById('demo').innerHTML="The class of the IP address is "+get_class;
+  })
+
+
+
+
+
+</script>
+
+</body>
+</html>
